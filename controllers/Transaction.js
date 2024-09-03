@@ -50,10 +50,9 @@ exports.fetchExpenses = async(req, res) => {
         }
 
         let ethPrice = await Crypto.findOne({name:"Ethereum"});
-        
+
         let lastUpdated = ethPrice.timeStamp;
-        lastUpdated = new Date(lastUpdated);
-        lastUpdated = lastUpdated.toLocaleString();
+        lastUpdated += " ";
 
         ethPrice = parseInt(ethPrice.value)
         
