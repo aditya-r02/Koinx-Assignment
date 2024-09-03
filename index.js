@@ -57,4 +57,4 @@ const fetchEthPrice = async() => {
 }
 
 // Setting up cron job to fetch ethereum prices every 10 minutes
-cron.schedule('* * * * *', fetchEthPrice);
+cron.schedule('*/10 * * * *', fetchEthPrice);
