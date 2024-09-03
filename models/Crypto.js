@@ -8,6 +8,10 @@ const cryptoSchema = mongoose.Schema({
     value: {
         type: String,
         trim: true
+    },
+    timeStamp:{
+        type: Date,
+        default: Date.now()
     }
 })
 

@@ -50,13 +50,20 @@ exports.fetchExpenses = async(req, res) => {
         }
 
         let ethPrice = await Crypto.findOne({name:"Ethereum"});
-        ethPrice = (ethPrice!==null)?parseInt(ethPrice.value):"Not Available"
+        
+        let lastUpdated = ethPrice.timeStamp;
+        lastUpdated = new Date(lastUpdated);
+        lastUpdated = lastUpdated.toLocaleString();
+
+        ethPrice = parseInt(ethPrice.value)
+        
 
         return res.status(200).json({
             success: true,
             message: "Expenses fetched!",
             expenses: total,
-            ether_price: ethPrice
+            etherium_price: ethPrice,
+            last_updated: lastUpdated
         })
     }
     catch(error){

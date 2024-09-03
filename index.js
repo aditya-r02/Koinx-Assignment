@@ -51,10 +51,10 @@ const fetchEthPrice = async() => {
     const data = await response.json();
     
     if (data.ethereum.inr) {
-        await Crypto.findOneAndUpdate({name:"Ethereum"}, {name:"Ethereum", value:data.ethereum.inr}, {upsert: true});
+        await Crypto.findOneAndUpdate({name:"Ethereum"}, {name:"Ethereum", value:data.ethereum.inr, timeStamp: Date.now()}, {upsert: true});
     }
 
 }
 
 // Setting up cron job to fetch ethereum prices every 10 minutes
-cron.schedule('*/10 * * * *', fetchEthPrice);
+cron.schedule('* * * * *', fetchEthPrice);
